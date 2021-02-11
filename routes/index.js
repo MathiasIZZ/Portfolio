@@ -8,6 +8,7 @@ const api = require('./api');
 
 router.use('/api', api);
 
+
 router.get('/', (req, res) => {
 
     const promesse = new Promise( (resolve, reject) => {

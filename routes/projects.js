@@ -28,7 +28,15 @@ router.post('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-    res.render('projects');
+
+    Projects.find({}).exec().then( (projects) => {
+
+        res.render('projects', { projects });
+    }).catch( (err) => {
+        res.status(400).render('index');
+    })
+
+
 })
 
 module.exports = router;

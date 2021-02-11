@@ -2,9 +2,9 @@ extends layout.pug
 
 block content
     div.d-flex.flex-column.aling-items-center.justify-content-center.w-100
-        h1 Mes projets
+        h1(class="mx-auto") Nouveau projet
 
-        form(method="post" action="/api/projects").d-flex.flex-column.card.w-75.aling-items-center.justify-content-center
+        form(method="post" action="/api/projects" class="d-flex flex-column card w-50 aling-items-center justify-content-center mx-auto")
             div.card-body Création d'un projet
             div.form-group
                 input(type="text" placeholder="title" name="title").form-control
@@ -13,6 +13,24 @@ block content
             div.form-group
                 input(type="text" placeholder="autheur" name="author").form-control
             button(type="submit").btn.btn-primary Enregistrer
-            p
-                | not a member
-                a(href="#") Sing Up now
+
+
+
+
+    hr
+    div(class="row mb-2")
+        h1 Liste de mes projets
+        hr
+        if projects
+            each project in projects
+                div(class="col-md-6")
+                    div(class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative")
+                        div(class="col p-4 d-flex flex-column position-static")
+                            strong(class="d-inline-block mb-2 text-primary") World
+                            h3(class="mb-0")= project.title
+                            div(class="mb-1 text-muted") Nov 12
+                            p(class="card-text mb-auto")= project.description
+                            a(href="#" class="stretched-link") Visiter
+
+                        div(class="col-auto d-none d-lg-block")
+
